@@ -1,4 +1,5 @@
 module.exports = {
+  root: true,
   env: {
     browser: true,
     es2021: true,
@@ -11,7 +12,6 @@ module.exports = {
     ecmaVersion: "latest",
     sourceType: "module",
     project: "tsconfig.json",
-    tsconfigRootDir: __dirname,
   },
   plugins: ["react", "@typescript-eslint/eslint-plugin"],
   ignorePatterns: [

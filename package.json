@@ -1,0 +1,13 @@
+{
+  "name": "eslint-config-react-ph",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "author": "",
+  "peerDependencies": {
+    "eslint": ">= 8",
+    "typescript": ">= 5",
+    "react": ">= 18"
+  }
+}

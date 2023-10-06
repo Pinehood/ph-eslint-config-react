@@ -1,0 +1,27 @@
+name: NPM Version Upgrade
+on:
+  push:
+    branches: [main, master]
+jobs:
+  publish:
+    name: Upgrade Package Version
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+          cache: "npm"
+      - name: Git Configuration
+        run: |
+          git config --global user.email "$EMAIL"
+          git config --global user.name "$USERNAME"
+        env:
+          EMAIL: ${{ vars.GH_EMAIL }}
+          USERNAME: ${{ vars.GH_USERNAME }}
+      - name: Patch Version
+        run: npm version patch -m "NPM Version Upgrade"
+      - name: Git Push
+        run: git push

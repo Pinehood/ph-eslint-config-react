@@ -1,0 +1,27 @@
+name: NPM Publish Package
+on:
+  workflow_run:
+    workflows: ["NPM Version Upgrade"]
+    types: [completed]
+jobs:
+  publish:
+    name: Publish NPM Package
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+          cache: "npm"
+          registry-url: "https://registry.npmjs.org"
+          scope: "pinehood"
+      - name: Install
+        run: npm install
+        env:
+          NODE_OPTIONS: "--max_old_space_size=8192"
+      - name: Publish
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

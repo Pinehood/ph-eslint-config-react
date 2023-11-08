@@ -1,7 +1,7 @@
 name: NPM Version Upgrade
 on:
   push:
-    branches: [main, master]
+    branches: [main]
 jobs:
   publish:
     name: Upgrade Package Version
